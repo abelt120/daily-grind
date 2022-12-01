@@ -21,11 +21,43 @@
 */
 
 
+
+function coffeeTemplate(coffee){
+
+    return `<p>
+        <img src="images/${coffee.pic}" alt="${coffee.alt}" id="coffee" />
+        <strong>${coffee.day}'s Coffee Special</strong> : ${coffee.day}'s daily coffee special is ${coffee.name}, ${coffee.desc}
+    </p>`;
+
+}
+
+
+
 let myDate = new Date() ;
 let today = myDate.getDay();
 let coffee = "";
+let myDay = "";
 
-switch(today){
+//use location object to access querystring (address bar)
+const queryString = window.location.search;
+    
+//output to console    
+console.log(queryString);
+    
+//separate querystring parameters
+const urlParams = new URLSearchParams(queryString);
+
+if(urlParams.has("day")){//from querystring
+    myDay = urlParams.get("day")
+}else{//today's day of week
+    myDay = today;
+}
+
+//change string to an integer
+myDay = parseInt(myDay)
+
+
+switch(myDay){
     case 1:
         today = "Monday";
         coffee = {
@@ -38,8 +70,85 @@ switch(today){
         };
     break;
 
+    case 2:
+        today = "Tuesday";
+        coffee = {
+            color:"brown",
+            name: "Caramel Latte",
+            pic: "caramel-latte.jpg",
+            alt: "A picture of a caramel latte",
+            day: "Tuesday",
+            desc: `It's cold, so caramel latte sounds good!`
+        };
+    break;
+
+    case 3:
+        today = "Wednesday";
+        coffee = {
+            color:"black",
+            name: "Cold Brew",
+            pic: "cold-brew.jpg",
+            alt: "A picture of a cold brew",
+            day: "Wednesday",
+            desc: `Cold brew for when we're serious!`
+        };
+    break;
+    
+    case 4:
+        today = "Thursday";
+        coffee = {
+            color:"yellow",
+            name: "Drip",
+            pic: "drip.jpg",
+            alt: "A picture of a drip",
+            day: "Thursday",
+            desc: `Cold brew for when we're serious!`
+        };
+    break;
+
+    case 5:
+        today = "Friday";
+        coffee = {
+            color:"violet",
+            name: "Frappaccino",
+            pic: "frappaccino.jpg",
+            alt: "A picture of a frappaccino",
+            day: "Friday",
+            desc: `Cold brew for when we're serious!`
+        };
+    break;
+    
+    case 6:
+        today = "Saturday";
+        coffee = {
+            color:"orange",
+            name: "Pumpkin Spic latte",
+            pic: "pumpkin-spice-latte.jpg",
+            alt: "A picture of a pumpkin spic latte",
+            day: "Saturday",
+            desc: `Cold brew for when we're serious!`
+        };
+    break;
+
+    case 0:
+        today = "Sunday";
+        coffee = {
+            color:"black",
+            name: "Mocha",
+            pic: "mocha.jpg",
+            alt: "A picture of a mocha",
+            day: "Sunday",
+            desc: `Cold brew for when we're serious!`
+        };
+    break;
+
     default:
         alert("something went wrong!");
 }
 
 console.log(coffee);
+
+document.getElementById("coffee-template").innerHTML = coffeeTemplate(coffee);
+
+   //change the background color of the HTML element
+   document.querySelector("html").style.backgroundColor = coffee.color;
