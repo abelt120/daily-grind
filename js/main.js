@@ -143,7 +143,7 @@ switch(myDay){
     break;
 
     default:
-        alert("something went wrong!");
+        alert("something went wrong!!");
 }
 
 console.log(coffee);
