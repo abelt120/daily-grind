@@ -102,7 +102,7 @@ switch(myDay){
             pic: "drip.jpg",
             alt: "A picture of a drip",
             day: "Thursday",
-            desc: `A drip a day keeps the low energy away!`
+            desc: `A drip a day keeps the low energy far away!`
         };
     break;
 
@@ -138,12 +138,12 @@ switch(myDay){
             pic: "mocha.jpg",
             alt: "A picture of a mocha",
             day: "Sunday",
-            desc: `Mocha Sundays are the best!`
+            desc: `Mocha Sundays are the besttt!`
         };
     break;
 
     default:
-        alert("something went wrong!!");
+        alert("something went wrong!");
 }
 
 console.log(coffee);
